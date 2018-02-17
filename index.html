@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Olympics App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="snowstorm.js"></script>
+    <script src="script.js"></script>
+  </head>
+
+  <body class="body">
+    <div class="container">
+
+      <div class="jumbotron" id="jumbotron">
+        <h2 class="title">Sports Data</h2>
+        <h5 class="description">Could you be an Olympian?</h5>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+        <div class="form">
+
+        <label for="formGroupExampleInput" class="form">Pick Your Season:</label><br />
+
+          <input type="radio" class="summerButton" id="inlineCheckbox1" name="gender" value="Summer Olympics"> Summer Olympics
+          <input type="radio" class="winterButton" id="inlineCheckbox2" name="gender" value="Winter Olympics"> Winter Olympics <br>
+
+        <label for="formGroupExampleInput">Who are you?:</label><br />
+        <input class="form-control" type="text" placeholder="John Doe">
+
+        <label for="formGroupExampleInput">What's your email?:</label><br />
+        <input class="form-control" type="email" placeholder="John.Doe@gmail.com">
+
+        </div>
+
+        <label for="formGroupExampleInput">Pick Your Sport:</label>
+        <select class="form-control form-control">
+        <option>Pick your Sport</option>
+        <option>Bobsled</option>
+        <option>Slalom</option>
+        <option>Giant Slalom</option>
+        </select>
+
+        <label for="formGroupExampleInput">Whats your time?:</label><br>
+        <input class="form-control" type="text" placeholder="Default input"><br>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+        </div>
+
+
+      <div class="col-lg-6" id="sportsInfo" style="border-style: dashed; height: 350px;"></div>
+
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+  </body>
+</html>
