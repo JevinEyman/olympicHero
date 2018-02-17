@@ -1,0 +1,20 @@
+{
+  "name": "olympichero",
+  "version": "1.0.0",
+  "description": "Pick a sport and athlete and see how you compare",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JevinEyman/olympicHero.git"
+  },
+  "author": "chris, james, and jevin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JevinEyman/olympicHero/issues"
+  },
+  "homepage": "https://github.com/JevinEyman/olympicHero#readme"
+}
