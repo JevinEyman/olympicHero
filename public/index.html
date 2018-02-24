@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title:{
+		text: "Olympic Race Results"
+	},
+	axisY:{
+		title: "Response values",
+		interval: 10
+	},
+	toolTip: {
+		shared: true
+	},
+	data: [{
+			type: "bar",
+			name: "Time and Distance",
+			toolTipContent: "<b>{label}</b> <br> <span style=\"color:#4F81BC\">{name}</span>: {y}",
+			dataPoints: [
+				{ y: 94, label: "World Record" },
+				{ y: 88, label: "Gold" },
+				{ y: 80, label: "Silver" },
+				{ y: 74, label: "Bronze" },
+				{ y: 76, label: "UserInput" }
+			]
+		},
+		{
+			type: "error",
+			name: "Variability Range",
+			toolTipContent: "<span style=\"color:#C0504E\">{name}</span>: {y[0]} - {y[1]}",
+			dataPoints: [
+				{ y: [92, 98], label: "World Record" },
+				{ y: [70, 78], label: "Gold" },
+				{ y: [78, 85], label: "Silver" },
+				{ y: [85, 92], label: "Bronze" },
+				{ y: [72, 78], label: "UserInput" }
+			]
+	}]
+});
+chart.render();
+
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
