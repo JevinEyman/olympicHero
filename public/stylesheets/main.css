@@ -1,0 +1,66 @@
+body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.jumbotron {
+  padding-top: 3%;
+  padding-bottom: 1%;
+  vertical-align: middle;
+  margin-bottom: 0%;
+}
+
+#carousel {
+  float: right;
+  height: 50%;
+}
+
+.d-block {
+  height: 100px;
+}
+
+.form { 
+  margin: 0 auto; 
+}
+
+#winterButton {
+  border: 3px solid;
+  border-style: groove;
+  border-radius: 5px;
+  padding: 1% 1% 1% 1%;
+}
+
+#summerButton {
+  border: 3px solid;
+  border-style: groove;
+  border-radius: 5px;
+  padding: 1% 1% 1% 1%;
+}
+
+.winterCard {
+  height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding-bottom: 3%;
+}
+
+.summerCard {
+  height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding-bottom: 3%;
+}
+
+.card-text {
+  background-color: transparent;
+}
+
+#winter-item {
+  margin-bottom: 10%;
+}
+
+
