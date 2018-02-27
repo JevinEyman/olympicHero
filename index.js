@@ -1,4 +1,42 @@
-module.exports = function(app) {
+// *****************************************************************************
+// Server.js - This file is the initial starting point for the Node/Express server.
+//
+// ******************************************************************************
+// *** Dependencies
+// =============================================================
+var express = require("express");
+const path = require('path')
+var bodyParser = require("body-parser");
+var PORT = process.env.PORT || 8080;
+// Sets up the Express App
+// =============================================================
+var app = express();
+
+
+app.set('port', (process.env.PORT || 5000));
+// Requiring our models for syncing
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+// Sets up the Express app to handle data parsing
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json
+app.use(bodyParser.json());
+
+// Static directory
+app.use(express.static("public"));
+
+// Routes
+// =============================================================
+// require("./routes/api-routes.js")(app);
+// require("./routes/html-routes.js")(app);
+
+
+
 
 var summerEvents = [
 { image: './images/summerSports/archery.png', name: 'Archery' }, {
@@ -116,10 +154,26 @@ var winterEvents =[ {
 
 
 app.get('/summer', function(request, res) {
-  res.render("contact",{event:summerEvents});
+  res.render("summer",{event:summerEvents});
  });
 
 app.get('/winter', function(request, res) {
-  res.render("contact",{event:winterEvents});
+  res.render("winter",{event:winterEvents});
  });
-}
+app.get('/', function(request, res) {
+  res.render("index",{event:winterEvents});
+ });
+
+
+
+
+
+var db = require("./models");
+
+// Syncing our sequelize models and then starting our Express app
+// =============================================================
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+});

@@ -1,0 +1,11 @@
+<div class="container">
+	<div class="row">
+{{#each event as |info|}}
+<div class="col col-sm-3">
+	<img src={{info.image}}>
+	<p class={{info.name}}>{{info.name}}</p>
+	<button class={{info.name}}>Select</button>
+</div>
+{{/each}}
+	</div>
+</div>
