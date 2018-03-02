@@ -1,13 +1,32 @@
-
+<div class="container">
+	<div class="jumbotron" id="jumbotron" style="background-image: url('./img/homeButtons/summerBackground.jpg'); color: white;">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm text-center">
+					<h2 class="title">Olympic Hero!</h2>
+					<h5 class="description">How Do You Stack Up Against the World's Greatest Athletes?</h5>
+					</div>
+				</div>
+			</div>
+	</div>
+</div>
 
 <div class="container">
-	<div class="row">
+	<div class="row text-center">
 {{#each event as |info|}}
-<div class="col col-sm-3">
-	<img src={{info.image}}>
-	<p class={{info.name}}>{{info.name}}</p>
-	<button class={{info.name}}>Select</button>
+<div class="col col-sm-4" id="summerCard">
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" id="summerImage" src={{info.image}} alt="Card image cap summerSports">
+  <div class="card-body text-center">
+    <button id={{info.name}} class="summerButton"><a href="/submitFormSummer">{{info.name}}</a></button>
+  </div>
+</div>
 </div>
 {{/each}}
 	</div>
 </div>
+
+<script type="text/javascript" src="./js/summer.js"></script>
+
+
+

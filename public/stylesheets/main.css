@@ -5,9 +5,9 @@ body {
 
 .jumbotron {
   padding-top: 3%;
-  padding-bottom: 1%;
+  padding-bottom: 3%;
   vertical-align: middle;
-  margin-bottom: 0%;
+  margin-bottom: 1%;
 }
 
 #carousel {
@@ -63,4 +63,72 @@ body {
   margin-bottom: 10%;
 }
 
+#winterHome {
+  height: 100%;
+  width: 100%;
+  margin-left:auto; 
+  margin-right:0;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 15px 15px 15px 15px;
+}
 
+#summerHome {
+  height: 100%;
+  width: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 15px 15px 15px 15px;
+}
+
+#homeButtons {
+  padding-top: 10px;
+  
+}
+
+.summerSports {
+  height: 150px;
+  width: 150px;
+}
+
+.winterSports {
+  height: 150px;
+  width: 150px;
+}
+
+.card {
+  border-width: 1px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+#summerCard {
+  padding-top: 1%;
+  padding-right: 10%;
+}
+
+#winterCard {
+  padding-top: 1%;
+  padding-right: 10%;
+}
+
+#summerImage {
+  width: 100%;
+}
+
+#winterImage {
+  width: 100%;
+}
+
+.winterButton {
+  background-color: #e7e7e7;
+  min-width: 50%;
+  border-radius: 10px 10px 10px 10px;
+  color: #555555;
+}
+
+.summerButton {
+  background-color: #e7e7e7;
+  min-width: 50%;
+  border-radius: 10px 10px 10px 10px;
+  color: #555555;
+}

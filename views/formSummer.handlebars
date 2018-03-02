@@ -1,0 +1,125 @@
+<div class="container fakeResults">
+	<div class="jumbotron" id="jumbotron" style="background-image: url('./img/homeButtons/sandBackground.jpg'); color: white;">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm text-center">
+					<h2 class="title">Olympic Hero!</h2>
+					<h5 class="description">How Do You Stack Up Against the World's Greatest Athletes?</h5>
+					</div>
+				</div>
+			</div>
+	</div>
+
+	<div class="jumbotron" id="jumbotronResults">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm text-center">
+					<h3>Gold</h3>
+                        <h5>Name:{{gold.name}}</h5>
+                        <h5>Time:{{gold.time}}</h5>
+                        <hr> 
+                    <h3>Silver</h3> 
+                        <h5>Name:{{silver.name}}</h5>
+                        <h5>Time:{{silver.time}}</h5>
+                        <hr>
+                    <h3>Bronze</h3>
+                        <h5>Name:{{bronze.name}}</h5>
+                        <h5>Time:{{bronze.time}}</h5>
+                        <hr>
+                    <div id="holder"></div> 
+
+                    <form id='inputForm'>
+                    <input type="text" name="Name" id="name" placeholder="Your Name">
+                    <br>
+                     <br>
+                    <input type="text" name="Time" id="time" placeholder="Your Time">
+                    <br>
+                     <br>
+                     
+                	</form>
+
+                	<button id="inputData">Submit</button>
+
+                    
+
+					</div>
+				</div>
+			</div>
+	</div>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+<script type="text/javascript">
+$('#inputData').on('click',function(){
+	console.log("help me plz")
+var userTime = $('#time').val();
+	var userName = $('#name').val();
+
+	$('#inputForm').remove()
+	$('#inputData').remove()
+
+
+	
+	var nameDiv = "<h5>Name: " + userName + "</h5>";
+	var timeDiv = "<h5>Time: " + userTime + "</h5>";
+
+
+	$("#holder").append(nameDiv)
+	$("#holder").append(timeDiv)
+	$("#holder").append($('<hr>'))
+	$("#holder").append($('<canvas id="myChart" width="100" height="100"></canvas>'))
+	
+
+
+	var ctx = document.getElementById("myChart").getContext('2d');
+	var myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: ["Usain Bolt", "Justin Gatlin", "Andre De Grasse", userName],
+        datasets: [{
+            label: 'Times',
+            data: [{{gold.time}}, {{silver.time}}, {{bronze.time}},userTime],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    },
+    scaleSteps : 0.5,
+});
+
+
+
+
+
+
+
+});
+</script>
+
+
+
+
+
+
+
+

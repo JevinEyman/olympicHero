@@ -11,7 +11,7 @@ var PORT = process.env.PORT || 8080;
 // Sets up the Express App
 // =============================================================
 var app = express();
-
+var db = require("./models");
 
 app.set('port', (process.env.PORT || 5000));
 // Requiring our models for syncing
@@ -27,8 +27,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+
 // Static directory
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'))
 
 // Routes
 // =============================================================
@@ -39,118 +40,104 @@ app.use(express.static("public"));
 
 
 var summerEvents = [
-{ image: './images/summerSports/archery.png', name: 'Archery' }, {
-    image: './images/summerSports/athletics.png',
-    name: 'Athletics' }, {
-    image: './images/summerSports/badminton.png',
-    name: 'Badminton' }, {
-    image: './images/summerSports/basketball.png',
-    name: 'Basketball' }, {
-    image: './images/summerSports/beachVolleyball.png',
-    name: 'Beach Volleyball' }, { 
-    image: './images/summerSports/boxing.png', name: 'Boxing' }, {
-    image: './images/summerSports/canoeSlalom.png',
-    name: 'Canoe Slalom' }, {
-    image: './images/summerSports/canoeSprint.png',
-    name: 'Canoe Sprint' }, {
-    image: './images/summerSports/cyclingBMX.png',
-    name: 'Cycling BMX' }, {
-    image: './images/summerSports/cyclingMountainBike.png',
-    name: 'Cycling Mountain Bike' }, {
-    image: './images/summerSports/cyclingRoad.png',
-    name: 'Cycling Road' }, {
-    image: './images/summerSports/cyclingTrack.png',
-    name: 'Cycling Track' }, { 
-    image: './images/summerSports/diving.png', name: 'Diving' }, {
-    image: './images/summerSports/equestrian.png',
-    name: 'Equestrian' }, {
-    image: './images/summerSports/equestrianEventing.png',
-    name: 'Equestrian Eventing' }, {
-    image: './images/summerSports/equestrianJumping.png',
-    name: 'Equestrian Jumping' }, { 
-    image: './images/summerSports/fencing.png', name: 'Fencing' }, {
-    image: './images/summerSports/football.png',
-    name: 'Football' }, { 
-    image: './images/summerSports/golf.png', name: 'Golf' }, {
-    image: './images/summerSports/gymnasticsArtistic.png',
-    name: 'Gymnastics Artistic' }, {
-    image: './images/summerSports/gymnasticsRhythmic.png',
-    name: 'Gymnastics Rhythmic' }, {
-    image: './images/summerSports/handball.png',
-    name: 'Handball' }, { 
-    image: './images/summerSports/hockey.png', name: 'Hockey' }, { 
-    image: './images/summerSports/judo.png', name: 'Judo' }, {
-    image: './images/summerSports/marathonSwimming.png',
-    name: 'Marathon Swimming' }, {
-    image: './images/summerSports/modernPentathlon.png',
-    name: 'Modern Pentathlon' }, {  
-    image: './images/summerSports/rowing.png', name: 'Rowing' }, { 
-    image: './images/summerSports/rugby.png', name: 'Rugby' }, { 
-    image: './images/summerSports/sailing.png', name: 'Sailing' }, {
-    image: './images/summerSports/shooting.png',
-    name: 'Shooting' }, {
-    image: './images/summerSports/swimming.png',
-    name: 'Swimming' }, {
-    image: './images/summerSports/synchronizedSwimming.png',
-    name: 'Synchronized Swimming' }, {
-    image: './images/summerSports/tableTennis.png',
-    name: 'Table Tennis' }, {
-    image: './images/summerSports/taekwondo.png',
-    name: 'Taekwondo' }, { 
-    image: './images/summerSports/tennis.png', name: 'Tennis' }, {
-    image: './images/summerSports/trampoline.png',
-    name: 'Trampoline' }, {
-    image: './images/summerSports/triathlon.png',
-    name: 'Triathlon' }, {
-    image: './images/summerSports/volleyball.png',
-    name: 'Volleyball' }, {
-    image: './images/summerSports/waterPolo.png',
-    name: 'Water Polo' }, {
-    image: './images/summerSports/weightlifting.png',
-    name: 'Weightlifting' }, {
-    image: './images/summerSports/wrestlingFreestyle.png',
-    name: 'Wrestling Freestyle' }, {
-    image: './images/summerSports/wrestlingGrecoRoman.png',
-    name: 'Wrestling Greco-Roman' } ];
+    { image: './img/summerSports/archery.png', 
+    name: 'Archery',
+    event: ('Individual', 'Team') }, 
+    {
+    image: './img/summerSports/athletics.png',
+    name: 'Athletics',
+    event: ('100m','100m Hurdles', '110m Hurdles', '1500m', '200m', '200m Hurdles', '4-Mile Team Race', '400m', '400m Hurdles', '5000m Team Race', '50km Walk', '56-Pound Weight Throw', '60m', '80m Hurdles', 'Cross-Country` Team Race', 'Discus (Greek Style)', 'Discus Throw', 'High Jump', 'Javelin (both hands)', 'Javelin (Free Style)', 'Javelin Throw', 'Long Jump', 'Pole Vault', 'Shot Put', 'Shot Put (both hands)', 'Standing High Jump', 'Standing Long Jump', 'Standing Triple Jump', 'Stone Throw', 'Triple Jump') },    
+    {
+    image: './img/summerSports/canoe.png',
+    name: 'Canoeing',
+    event: ('C1 200m Canadian Singles', 'C1 Canadian Slalom Singles', 'C2 Canadian Slalom Pairs', 'K1 200m Kayak Singles', 'K1 Kayak Slalom Singles') },  
+    {
+    image: './img/summerSports/cycling.png',
+    name: 'Cycling',
+    event: ('_ Mile', '500m Time Trial', 'BMX', 'Individual Road Time Trial', 'Individual Sprint', 'One-Lap Race') },  
+    { 
+    image: './img/summerSports/golf.png', 
+    name: 'Golf',
+    event: ('Golf Team', 'Individual Men', 'Individual Women') }, 
+    {
+    image: './img/summerSports/gymnastics.png',
+    name: 'Gymnastics',
+    event: ('Balance Beam', 'Floor Exercises', 'Horizontal Bar', 'Parallel Bars', 'Rope climbing', 'Side Horse', 'Tumbling', 'Uneven Bars') }, 
+    {
+    image: './img/summerSports/shooting.png',
+    name: 'Shooting',
+    event: ('100m Running Target Single & Double Shot', '10m Air Pistol', '10m Air Rifle', '10m Running Target', '14m Trap (Double shot)', '16m Trap (Single Shot)', '200-600m Military Rifle Team', '200m Military Rifle', '20m Duelling Pistols', '20m Military Revolver', '20m Military Revolver (Model 1873/74)', '25m Duelling Pistols', '25m Military Pistol', '25m Muzzle-Loading Pistol', '25m Sporting Pistol', '300m Free Rifle', '300m Free Rifle Kneeling', '300m Free Rifle Prone', '300m Free Rifle Standing', '30m Dueling Pistols', '30m Dueling Pistols Team', '30m Free Pistol', '30m Military Pistol', '30m Military Pistol Team', '50m Free Pistol', '50m Free Pistol Team', '50m Running Target', '50m Small-Bore Rifle', '600m Free Rifle` Prone', '600m Military Rifle', 'Skeet') }, 
+    {
+    image: './img/summerSports/swimming.png',
+    name: 'Swimming',
+    event: ('100m Backstroke', '100m Breaststroke', '100m Butterfly', '100m Freestyle', '1500m Freestyle', '200m Team Swimming', '50m Freestyle', 'Underwater Swimming') }, 
+    {
+    image: './img/summerSports/triathlon.png',
+    name: 'Triathlon',
+    event: ('individual') },];
 
 var winterEvents =[ {
-    image: './images/winterSports/alpineSkiing.png',
-    name: 'Alpine Skiing' },
+    image: './img/winterSports/alpineSkiing.png',
+    name: 'Alpine Skiing',
+    event: ('combined') },
   {
-    image: './images/winterSports/biathlon.png',
-    name: 'Biathlon' },
+    image: './img/winterSports/figureSkating.png',
+    name: 'Figure Skating',
+    event: ('individual') },
   {
-    image: './images/winterSports/bobsleigh.png',
-    name: 'Bobsleigh' },
+    image: './img/winterSports/freestyleSkiing.png',
+    name: 'Freestyle Skiing',
+    event: ('Aerials', 'Halfpipe', 'Moguls', 'Slopestyle') },
+  { 
+    image: './img/winterSports/luge.png', 
+    name: 'Luge',
+    event: ('singles') },
   {
-    image: './images/winterSports/crossCountrySkiing.png',
-    name: 'Cross Country Skiing' },
-  { image: './images/winterSports/curling.png', name: 'Curling' },
+    image: './img/winterSports/nordicCombined.png',
+    name: 'Nordic Combined',
+    event: ('Individual (15km+Jump)', 'Individual (18km+Jump)', 'Individual Large Hill 10k', 'Individual Sprint (7.5km+Jump)') },
   {
-    image: './images/winterSports/figureSkating.png',
-    name: 'Figure Skating' },
+    image: './img/winterSports/shortTrack.png',
+    name: 'Short Track Speed Skating',
+    event: ('1500m Short Track', '500m Short Track') },
   {
-    image: './images/winterSports/freestyleSkiing.png',
-    name: 'Freestyle Skiing' },
+    image: './img/winterSports/snowboard.png',
+    name: 'Snowboarding',
+    event: ('Halfpipe', 'Slopestyle') },
   {
-    image: './images/winterSports/iceHockey.png',
-    name: 'Ice Hockey' },
-  { image: './images/winterSports/luge.png', name: 'Luge' },
+    image: './img/winterSports/speedSkating.png',
+    name: 'Speed Skating',
+    event: ('1000m', '500m', 'Allaround') },
   {
-    image: './images/winterSports/nordicCombined.png',
-    name: 'Nordic Combined' },
+    image: './img/winterSports/skiJumping.png',
+    name: 'Ski Jumping',
+    event: ('Large Hill', 'Normal Hill') },];
+
+var olympicLogos =[ {
+    image: './img/olympicLogos/1924-paris-summer-olympics.png',
+    name: '1924 Paris' },
   {
-    image: './images/winterSports/shortTrackSpeedSkating.png',
-    name: 'Short Track Speed Skating' },
-  {
-    image: './images/winterSports/skeleton.png',
-    name: 'Skeleton' },
-  {
-    image: './images/winterSports/snowboard.png',
-    name: 'Ski Jumping' },
-  {
-    image: './images/winterSports/speedSkating.png',
-    name: 'Snowboard' } ];
+    image: './img/olympicLogos/1924-paris-summer-olympics.png',
+    name: '1932 Lake Placid'
+  },];
+
+  var fakeSummer = [{
+    name:" Usain Bolt",
+    Medal:"Gold",
+    time:" 9.81"
+  },{
+    name:" Justin Gatlin",
+    Medal:"Silver",
+    time:" 9.89"
+  },{
+    name:" Andre De Grasse",
+    Medal:"Bronze",
+    time:" 9.91"
+  }]
+
+
+
+
 
 
 app.get('/summer', function(request, res) {
@@ -168,7 +155,20 @@ app.get('/', function(request, res) {
 
 
 
-var db = require("./models");
+
+
+
+
+app.get('/submitFormSummer', function(request, res) {
+  res.render("formSummer",{
+
+    gold:fakeSummer[0],
+    silver:fakeSummer[1],
+    bronze:fakeSummer[2]});
+ });
+
+
+
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
